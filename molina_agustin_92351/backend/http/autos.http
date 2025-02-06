@@ -1,0 +1,49 @@
+# Instalá el complemento REST Client (Huachao Mao) para utilizar este archivo
+# Asegurate de tener el server corriendo: >node server
+# Presioná <Send Request> o <Ctrl> + <Alt> + <R>
+
+@protocol = http
+@hostname = localhost
+@port = 3001
+@host = {{protocol}}://{{hostname}}:{{port}}
+@apiUrl = api/autos/
+@contentType = application/json
+
+
+### Recuperar todos los autos
+GET {{host}}/{{apiUrl}} HTTP/1.1
+
+### Recuperar todos los autos de la categoria SUV
+GET {{host}}/{{apiUrl}}/SUV HTTP/1.1
+
+### Recuperar todos los autos de la categoria Pickup
+GET {{host}}/{{apiUrl}}/Pickup HTTP/1.1
+
+### Recuperar todos los autos de la categoria Pickup cuyo fabricante contiene "toyo"
+GET {{host}}/{{apiUrl}}/Pickup?fabricante=toyo HTTP/1.1
+
+### Recuperar todos los autos de la categoria Pickup 
+### cuyo fabricante contiene "toyo" y el modelo contiene "taco"
+GET {{host}}/{{apiUrl}}/Pickup?fabricante=toyo&modelo=taco HTTP/1.1
+
+### Crear un auto
+POST {{host}}/{{apiUrl}} HTTP/1.1
+content-type: {{contentType}}
+
+{
+    "anio": 2024,
+    "fabricante": "Renault",
+    "modelo": 12,
+    "categoria": "sedan"
+}
+
+### Actualizar un auto
+PUT {{host}}/{{apiUrl}}/1001 HTTP/1.1
+content-type: {{contentType}}
+
+{
+    "modelo": "18"
+}
+
+### Eliminar un auto
+DELETE {{host}}/{{apiUrl}}/1001 HTTP/1.1

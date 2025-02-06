@@ -1,0 +1,15 @@
+# Instalá el complemento REST Client (Huachao Mao) para utilizar este archivo
+# Asegurate de tener el server corriendo: >node server
+# Presioná <Send Request> o <Ctrl> + <Alt> + <R>
+
+@protocol = http
+@hostname = localhost
+@port = 3001
+@host = {{protocol}}://{{hostname}}:{{port}}
+@apiUrl = api/categorias/
+@contentType = application/json
+
+
+### Recuperar todas los categorias
+GET {{host}}/{{apiUrl}} HTTP/1.1
+
